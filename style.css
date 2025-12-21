@@ -1,15 +1,15 @@
-/* GENEL AYARLAR*/
+/* GENEL AYARLAR */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* kutuların taşmasını engeller */
+    box-sizing: border-box; /* kutuların taşmasını engelliyor */
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #fff0f5; /* açık pembe */
+    background-color: #fff0f5;
 }
 
 a {
@@ -19,18 +19,15 @@ a {
 }
 
 ul {
-    list-style-type: none; /* Maddelerin başındaki varsayılan noktaları siler */
+    list-style-type: none; /* maddelerin başındaki varsayılan noktaları siliyor */
 }
 
-/* =========================================
-   2. NAVBAR (ÜST MENÜ)
-   ========================================= */
+/* NAVBAR (ÜST MENÜ) */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;  /* Sadece sağdan soldan boşluk, üst/alt sıfır */
-    /* height: 90px;  <-- BU SATIRI TAMAMEN SİL! (Suçlu bu) */
+    padding: 0 5%;  /* sadece sağdan soldan boşluk, üst/alt sıfır */
     background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
@@ -38,15 +35,15 @@ ul {
     z-index: 1000;
 }
 
-/* Logo Ayarları */
+/* logo Ayarları */
 .my-logo {
-    height: 70px; /* İdeal boyut budur (60px ile 80px arası) */
+    height: 70px; 
     width: auto;
     display: block;
-    padding: 5px 0; /* Logoya üstten alttan minik bir nefes payı */
+    padding: 5px 0;
 }
 
-/* Menü Linkleri */
+/* menü Linkleri */
 .menu-links a {
     margin: 0 15px;
     font-weight: 600;
@@ -55,13 +52,13 @@ ul {
     transition: 0.3s;
 }
 
-/* Menü linklerinin üzerine gelince (HOVER) olacaklar */
+/* menü linklerinin üzerine gelince hover yapiyorr */
 .menu-links a:hover {
-    color: #d63384; /* Yazı rengi Pembeye döner */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Arkasına hafif bir gölge gelir */
+    color: #d63384; /* yazıyı pembe yapıcak */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* hafif bir gölge de geliyor */
 }
 
-/* Dil Seçeneği */
+/* dil Seçeneği */
 .language-switch {
     font-weight: bold;
     font-size: 0.9rem;
@@ -76,21 +73,19 @@ ul {
     color: #d63384;
 }
 
-/* =========================================
-   3. HERO SECTION (GİRİŞ KISMI)
-   ========================================= */
+/* HERO SECTION (GİRİŞ KISMI) */
 
 .hero {
     display: flex;
-    align-items: center; /* Dikeyde ortala */
+    align-items: center;
     justify-content: center;
     padding: 80px 10%;
-    background-color: transparent; /* Arka planı şeffaf yap ki alttaki pembe görünsün */
+    background-color: transparent; /* arka planı şeffaf yapıyor ki burası da pembe görünsün arkaplan gibi */
     min-height: 80vh;
 }
 
 .hero-text {
-    flex: 1; /* Sol taraf genişlesin */
+    flex: 1; /* sol taraf genişlesin */
     padding-right: 50px;
 }
 
@@ -108,7 +103,7 @@ ul {
 }
 
 .hero-image {
-    flex: 1; /* Sağ taraf genişlesin */
+    flex: 1; /* sağ taraf genişlesin */
     display: flex;
     justify-content: center;
 }
@@ -117,14 +112,12 @@ ul {
     width: 350px;
     height: 350px;
     object-fit: cover;
-    border-radius: 50%; /* Yuvarlak resim */
-    border: 8px solid #f0f0f0; /* Resim çerçevesi */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Resim gölgesi */
+    border-radius: 50%; /* yuvarlak resim */
+    border: 8px solid #f0f0f0; /* resim çerçevesi */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* resim gölgesi */
 }
 
-/* =========================================
-   4. CV SECTION (ÖZGEÇMİŞ KARTLARI)
-   ========================================= */
+/* CV SECTION (ÖZGEÇMİŞ KARTLARI) */
 
 .cv-section {
     padding: 60px 15%;
@@ -143,14 +136,14 @@ ul {
     background: #ffffff;
     padding: 30px;
     margin-bottom: 25px;
-    border-radius: 12px; /* Yuvarlak köşeler */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Modern gölge */
-    border-left: 5px solid #d63384; /* Sol tarafta şık çizgi */
-    transition: transform 0.3s ease; /* Hareket efekti */
+    border-radius: 12px; /* yuvarlak köşeler */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* gölge */
+    border-left: 5px solid #d63384; /* sol tarafta çizgi */
+    transition: transform 0.3s ease; /* hareket efekti */
 }
 
 .cv-item:hover {
-    transform: translateY(-5px); /* Üzerine gelince hafif yukarı kalkar */
+    transform: translateY(-5px); /* imleç gelince hafif kalkıyor */
 }
 
 .cv-item h3 {
@@ -161,16 +154,14 @@ ul {
     padding-bottom: 10px;
 }
 
-/* Liste Madde İşaretleri */
+/* Liste madde işaretleri */
 
 .cv-item ul li {
     margin-bottom: 8px;
     position: relative;
 }
 
-/* =========================================
-   TAKVİM SAYFASI (TIMELINE) TASARIMLARI
-   ========================================= */
+/* TAKVİM SAYFASI (TIMELINE) TASARIMLARI */
 .schedule-section {
     padding: 50px 2%;
     min-height: 80vh;
@@ -191,7 +182,7 @@ ul {
     table-layout: fixed; 
 }
 
-/* Tablo Başlıkları */
+/* Tablo başlıkları */
 .main-title-row th {
     background-color: #222;
     color: #fff;
@@ -217,7 +208,7 @@ ul {
     color: #999;
 }
 
-/* Tablo Hücreleri */
+/* Tablo hücreleri */
 .schedule-table td {
     padding: 8px;
     border: 1px solid #eee;
@@ -227,7 +218,7 @@ ul {
     overflow: hidden;
 }
 
-/* Ders Kartı */
+/* Ders kartı */
 .course-card {
     background-color: #fff0f5;
     border-left: 4px solid #d63384;
@@ -263,14 +254,12 @@ ul {
     background-color: #fcfcfc;
 }
 
-/* =========================================
-   5. FOOTER (ALT BİLGİ)
-   ========================================= */
+/*  FOOTER (ALT BİLGİ) */
 
 footer {
     text-align: center;
     padding: 40px;
-    background-color: #222; /* Koyu arka plan */
+    background-color: #222; /* koyu arka plan */
     color: #fff;
     margin-top: auto;
 }
@@ -286,14 +275,12 @@ footer .social-links a:hover {
 }
 
 
-/* =========================================
-   6. MOBİL UYUMLULUK (TELEFONLAR İÇİN)
-   ========================================= */
+/* MOBİL UYUMLULUK (TELEFONLAR İÇİN) */
 
 @media (max-width: 768px) {
 
     .navbar {
-        flex-direction: column; /* Menüyü alt alta diz */
+        flex-direction: column; /* menüyü alt alta diziyor */
         padding: 10px;
     }
    
@@ -306,7 +293,7 @@ footer .social-links a:hover {
     }
 
     .hero {
-        flex-direction: column-reverse; /* Telefonda önce yazı değil, önce resim görünsün */
+        flex-direction: column-reverse; /* telefonda önce image sonra yazı görünecek */
         text-align: center;
         padding: 40px 5%;
     }
@@ -317,7 +304,7 @@ footer .social-links a:hover {
     }
 
     .hero-image img {
-        width: 250px; /* Telefonda resmi küçült */
+        width: 250px; /* telefonda resmi küçült */
         height: 250px;
     }
 
@@ -326,12 +313,10 @@ footer .social-links a:hover {
     }
 }
 
-/* =========================================
-   İLETİŞİM SAYFASI TASARIMI
-   ========================================= */
+/* İLETİŞİM SAYFASI TASARIMI */
 .contact-section {
     padding: 60px 10%;
-    min-height: 80vh; /* Sayfa boş görünmesin */
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -340,20 +325,20 @@ footer .social-links a:hover {
 .contact-container {
     display: flex;
     justify-content: center;
-    gap: 30px; /* İki kutu arasındaki boşluk */
-    flex-wrap: wrap; /* Telefondan girilince alt alta geçsin */
+    gap: 30px; /* kutular arasındaki boşluk */
+    flex-wrap: wrap; /* telefondan girilince alt alta geçsin */
     width: 100%;
 }
 
 /* Kutuların Tasarımı (Divler) */
 .contact-card {
     background-color: white;
-    width: 350px; /* Kutunun genişliği */
+    width: 350px; 
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Hafif gölge */
-    border-left: 5px solid #d63384; /* Sol taraftaki pembe çizgi */
-    text-align: center; /* Yazıları ortala */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* gölge */
+    border-left: 5px solid #d63384; /* sol taraftaki pembe çizgi */
+    text-align: center; /* yazıları ortalıyor */
     transition: transform 0.3s;
 }
 
@@ -374,7 +359,7 @@ footer .social-links a:hover {
 
 /* Link/Buton Tasarımı */
 .contact-btn {
-    background-color: #222; /* Siyah buton */
+    background-color: #222; /* siyah buton */
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -383,13 +368,11 @@ footer .social-links a:hover {
 }
 
 .contact-btn:hover {
-    background-color: #d63384; /* Üzerine gelince pembe olsun */
+    background-color: #d63384; /* üzerine gelince pembe olsun */
     color: white;
 }
 
-/* =========================================
-   DETAYLI FORM TASARIMI (Seni Tanıyalım)
-   ========================================= */
+/* DETAYLI FORM TASARIMI (Seni Tanıyalım) */
 
 .form-section {
     padding: 60px 10%;
@@ -404,8 +387,8 @@ footer .social-links a:hover {
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 600px; /* Çok geniş olmasın */
-    border-top: 5px solid #d63384; /* Üstte pembe şerit */
+    max-width: 600px;
+    border-top: 5px solid #d63384; /* üstte pembe şerit */
 }
 
 .form-wrapper h2 {
@@ -424,7 +407,7 @@ fieldset {
 
 legend {
     font-weight: bold;
-    color: #d63384; /* Başlıklar pembe olsun */
+    color: #d63384; /* başlıklar pembe */
     padding: 0 10px;
 }
 
@@ -463,7 +446,7 @@ legend {
 /* Radio ve Checkbox Grupları */
 .radio-group, .checkbox-group {
     display: flex;
-    gap: 15px; /* Yan yana boşluk */
+    gap: 15px; /* yan yana boşluk */
     flex-wrap: wrap;
 }
 
@@ -483,7 +466,7 @@ legend {
 }
 
 .submit-btn {
-    flex: 2; /* Gönder butonu daha geniş olsun */
+    flex: 2; /* gönder butonunu daha geniş yapıyormuş */
     background-color: #222;
     color: white;
     padding: 12px;
@@ -499,7 +482,7 @@ legend {
 }
 
 .reset-btn {
-    flex: 1; /* Temizle butonu daha dar */
+    flex: 1; /* temizle butonu daha dar */
     background-color: #ddd;
     color: #333;
     padding: 12px;
@@ -513,9 +496,7 @@ legend {
     background-color: #ccc;
 }
 
-/* =========================================
-   SADE DUYURULAR SAYFASI TASARIMI
-   ========================================= */
+/* DUYURULAR SAYFASI TASARIMI */
 
 .news-section {
     padding: 60px 10%;
@@ -542,7 +523,7 @@ legend {
 /* Kartların Dizilimi (Grid) */
 .news-grid {
     display: grid;
-    /* Kart genişliği en az 300px olsun, sığdığı kadar yan yana diz */
+    /* kart genişliği en az 300px, sığdığı kadar yan yana diziyor */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
@@ -551,9 +532,9 @@ legend {
 .news-card {
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Çok hafif gölge */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* hafif gölge */
     transition: transform 0.3s ease;
-    border-left: 5px solid #d63384; /* Sol tarafı pembe çizgili */
+    border-left: 5px solid #d63384; /* sol tarafı pembe çizgili */
     display: flex;
     flex-direction: column;
 }
@@ -572,7 +553,7 @@ legend {
 /* Kategori ve Tarih Satırı */
 .card-meta {
     display: flex;
-    justify-content: space-between; /* İki uca yasla */
+    justify-content: space-between; /* iki uca yaslıyor */
     align-items: center;
     margin-bottom: 15px;
     font-size: 0.85rem;
@@ -583,7 +564,7 @@ legend {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background-color: #fff0f5; /* Kategori arkasına hafif pembe fon */
+    background-color: #fff0f5; /* kategori arkasına hafif pembe fon */
     padding: 4px 10px;
     border-radius: 4px;
 }
