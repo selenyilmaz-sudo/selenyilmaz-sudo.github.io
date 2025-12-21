@@ -3,7 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sizleri de tanımak isterim.">
+    <meta name="keywords" content="Selen Yılmaz, Web Tasarım, Portfolyo, HTML, FinalProjem">
+    <meta name="author" content="Selen Yılmaz">
     <title>Form | Selen Yılmaz</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGLTZKPD0X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-FGLTZKPD0X');
+    </script>
+
+    <meta property="og:title" content="Form | Selen Yılmaz">
+    <meta property="og:description" content="Sizleri de tanımak isterim.">
+    <meta property="og:image" content="https://www.selenyilmaz.me/logo.png">
+    <meta property="og:url" content="https://selenyilmaz.me/form.html">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -93,6 +112,10 @@
 
                 <div class="button-group">
                     <button type="reset" class="reset-btn">Temizle</button>
+                    <div style="display:none;">
+                        <label>Burayı boş bırak.</label>
+                        <input type="text" id="honeypot_trap" name="honeypot_trap" value="">
+                    </div>
                     <button type="submit" class="submit-btn">Bilgileri Gönder</button>
                 </div>
 
@@ -111,7 +134,17 @@
         })();
 
         document.getElementById('knowYouForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // sayfanın yenilenmesini durdur
+            e.preventDefault(); // sayfanın yenilenmesini durduruyor
+
+            // spam kontrolü, honeytrap diye geçiyormuş
+            // gizli kutunun değerini alıyor
+            var trapValue = document.getElementById('honeypot_trap').value;
+        
+            // eğer gizli kutu doluysa (yani bunu bir robot doldurduysa)
+            if (trapValue !== "") {
+                console.log("Spam bot yakalandı! Mail gönderilmiyor.");
+                return; // burada bitirir, formu göndermez
+            }
 
             // butonun yazısını değiştirir
             const btn = document.querySelector('.submit-btn');

@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Selen Yılmaz Personal Web Site - Final Project">
-    <title>Form | Selen Yılmaz</title>
+    <meta name="description" content="I would like to get to know you as well.">
+    <meta name="keywords" content="Selen Yilmaz, Web Design, Portfolio, HTML, FinalProject">
+    <meta name="author" content="Selen Yilmaz">
+    <title>Form | Selen Yilmaz</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGLTZKPD0X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-FGLTZKPD0X');
+    </script>
+
+    <meta property="og:title" content="Form | Selen Yilmaz">
+    <meta property="og:description" content="I would like to get to know you as well.">
+    <meta property="og:image" content="https://www.selenyilmaz.me/logo.png">
+    <meta property="og:url" content="https://selenyilmaz.me/form-en.html">
+    <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!--internetten uygulamaların vs logosunu eklersem eğer burası gerekli-->
 </head>
 <body>
     <nav class="navbar">
@@ -97,6 +113,10 @@
 
                 <div class="button-group">
                     <button type="reset" class="reset-btn">Reset</button>
+                    <div style="display:none;">
+                        <label>Leave this field empty</label>
+                        <input type="text" id="honeypot_trap" name="honeypot_trap" value="">
+                    </div>
                     <button type="submit" class="submit-btn">Submit</button>
                 </div>
 
@@ -116,6 +136,16 @@
 
         document.getElementById('knowYouForm').addEventListener('submit', function(e) {
             e.preventDefault(); // sayfanın yenilenmesini durdur
+
+            // spam kontrolü
+            // gizli kutunun değerini alıyor
+            var trapValue = document.getElementById('honeypot_trap').value;
+        
+            // eğer gizli kutu doluysa (yani bunu bir robot doldurduysa)
+            if (trapValue !== "") {
+                console.log("Spam bot detected! Email's are not being sent.");
+                return; // burada bitirir, formu göndermez
+            }
 
             // butonun yazısını değiştirir
             const btn = document.querySelector('.submit-btn');
