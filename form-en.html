@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="Eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Selen Yılmaz Personal Web Site - Final Project">
+    <title>Form | Selen Yılmaz</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!--internetten uygulamaların vs logosunu eklersem eğer burası gerekli-->
+</head>
+<body>
+    <nav class="navbar">
+       <div class="logo-container">
+            <a href="index-en.html">
+                <img src="logo.png" alt="Logo" class="my-logo">
+            </a>
+        </div>
+
+        <div class="menu-links">
+            <a href="index-en.html">Home Page</a>
+            <a href="timeline-en.html">Timeline</a>
+            <a href="contact-en.html">Contact</a>
+            <a href="form-en.html" class="active">Form</a>
+            <a href="news-en.html">News</a>
+        </div>
+
+        <div class="language-switch">
+            <span class="current-lang">EN</span> 
+            <span class="separator">|</span> 
+            <a href="form.html" class="lang-link">TR</a>
+        </div>
+
+    </nav>
+
+    <section class="form-section">
+        <div class="form-wrapper">
+            <h2>Now Let's Get to Know You!</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">Answer the questions below, and let's get to know each other!</p>
+
+            <form id="knowYouForm">
+                
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    
+                    <div class="form-group">
+                        <label for="fullname">Name and Surname:</label>
+                        <input type="text" id="fullname" placeholder="Exm: John Keating" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthdate">Birthdate:</label>
+                        <input type="date" id="birthdate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="Female" checked> Female</label>
+                            <label><input type="radio" name="gender" value="Male"> Male</label>
+                            <label><input type="radio" name="gender" value="I don't want to mention it."> Other</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Interests and Abilities</legend>
+
+                    <div class="form-group">
+                        <label for="job">Your Job / Department:</label>
+                        <select id="job">
+                            <option value="Student">Student</option>
+                            <option value="Engineer">Engineer</option>
+                            <option value="Designer">Designer</option>
+                            <option value="Developer">Developer</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What are your Hobbies?</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="hobby" value="Coding"> Coding</label>
+                            <label><input type="checkbox" name="hobby" value="Sport"> Sport</label>
+                            <label><input type="checkbox" name="hobby" value="Music"> Music</label>
+                            <label><input type="checkbox" name="hobby" value="Travelling"> Travelling</label>
+                            <label><input type="checkbox" name="hobby" value="Books"> Books</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="bio">Tell me briefly about yourself.:</label>
+                    <textarea id="bio" rows="4" placeholder="You can write here..."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="reset" class="reset-btn">Reset</button>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        
+        // EmailJS başlatılıyor
+        (function() {
+            // kendi public key'im
+            emailjs.init("JoPBiybvu09N4bOBk"); 
+        })();
+
+        document.getElementById('knowYouForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // sayfanın yenilenmesini durdur
+
+            // butonun yazısını değiştirir
+            const btn = document.querySelector('.submit-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Being Sent...';
+
+            // verileri toplama
+            
+            var fullname = document.getElementById('fullname').value;
+            var birthdate = document.getElementById('birthdate').value;
+            var job = document.getElementById('job').value;
+            var bio = document.getElementById('bio').value;
+
+            var genderInput = document.querySelector('input[name="gender"]:checked');
+            var gender = genderInput ? genderInput.value : "Unspecified";
+
+            var selectedHobbies = [];
+            var checkboxes = document.querySelectorAll('input[name="hobby"]:checked');
+            checkboxes.forEach((box) => {
+                selectedHobbies.push(box.value);
+            });
+            var hobbyString = selectedHobbies.length > 0 ? selectedHobbies.join(", ") : "No hobby was selected.";
+
+            // paket hazırlıyor
+            var templateParams = {
+                fullname: fullname,
+                birthdate: birthdate,
+                gender: gender,
+                job: job,
+                hobbies: hobbyString,
+                bio: bio
+            };
+
+            // Emailjs'e gönderiyor
+            // kendi service ve template id'im
+            const serviceID = 'service_vaku0al'; 
+            const templateID = 'template_whfrnap'; 
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(function() {
+                    // başarılıysa
+                    btn.innerHTML = originalText;
+                    alert('Great! Your information has been successfully sent. Nice to meet you!');
+                    document.getElementById("knowYouForm").reset(); // reset
+                }, function(error) {
+                    // sıkıntılıysa
+                    btn.innerHTML = originalText;
+                    alert('An error occurred: ' + JSON.stringify(error));
+                });
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Selen Yılmaz. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/selenyilmaz-sudo" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+             </div>
+    </footer>
+
+</body>
+</html>

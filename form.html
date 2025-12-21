@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form | Selen Yılmaz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+       <div class="logo-container">
+            <a href="index.html">
+                <img src="logo.png" alt="Logo" class="my-logo">
+            </a>
+        </div>
+
+        <div class="menu-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="timeline.html">Takvimim</a>
+            <a href="contact.html">İletişim</a>
+            <a href="form.html"class="active">Form</a>
+            <a href="news.html">Duyurular</a>
+        </div>
+
+        <div class="language-switch">
+            <span class="current-lang">TR</span> 
+            <span class="separator">|</span> 
+            <a href="form-en.html" class="lang-link">EN</a>
+        </div>
+
+    </nav>
+
+    <section class="form-section">
+        <div class="form-wrapper">
+            <h2>Şimdi de Seni Tanıyalım</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">Aşağıdaki soruları cevapla, tanışalım!</p>
+
+            <form id="knowYouForm">
+                
+                <fieldset>
+                    <legend>Kişisel Bilgiler</legend>
+                    
+                    <div class="form-group">
+                        <label for="fullname">Adın Soyadın:</label>
+                        <input type="text" id="fullname" placeholder="Örn: Ayşe Yılmaz" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthdate">Doğum Tarihin:</label>
+                        <input type="date" id="birthdate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cinsiyet:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="Kadın" checked> Kadın</label>
+                            <label><input type="radio" name="gender" value="Erkek"> Erkek</label>
+                            <label><input type="radio" name="gender" value="Belirtmek İstemiyorum"> Diğer</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>İlgi ve Yetenekler</legend>
+
+                    <div class="form-group">
+                        <label for="job">Mesleğin / Bölümün:</label>
+                        <select id="job">
+                            <option value="Öğrenci">Öğrenci</option>
+                            <option value="Mühendis">Mühendis</option>
+                            <option value="Tasarımcı">Tasarımcı</option>
+                            <option value="Yazılımcı">Yazılımcı</option>
+                            <option value="Diğer">Diğer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hobilerin Neler?</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="hobby" value="Kodlama"> Kodlama</label>
+                            <label><input type="checkbox" name="hobby" value="Spor"> Spor</label>
+                            <label><input type="checkbox" name="hobby" value="Müzik"> Müzik</label>
+                            <label><input type="checkbox" name="hobby" value="Seyahat"> Seyahat</label>
+                            <label><input type="checkbox" name="hobby" value="Kitap"> Kitap</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="bio">Kendinden Kısaca Bahset:</label>
+                    <textarea id="bio" rows="4" placeholder="Buraya yazabilirsin..."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="reset" class="reset-btn">Temizle</button>
+                    <button type="submit" class="submit-btn">Bilgileri Gönder</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        
+        // EmailJS başlatılıyor
+        (function() {
+            // kendi public key'im
+            emailjs.init("JoPBiybvu09N4bOBk"); 
+        })();
+
+        document.getElementById('knowYouForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // sayfanın yenilenmesini durdur
+
+            // butonun yazısını değiştirir
+            const btn = document.querySelector('.submit-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Gönderiliyor...';
+
+            // verileri toplama
+            
+            var fullname = document.getElementById('fullname').value;
+            var birthdate = document.getElementById('birthdate').value;
+            var job = document.getElementById('job').value;
+            var bio = document.getElementById('bio').value;
+
+            var genderInput = document.querySelector('input[name="gender"]:checked');
+            var gender = genderInput ? genderInput.value : "Belirtilmemiş";
+
+            var selectedHobbies = [];
+            var checkboxes = document.querySelectorAll('input[name="hobby"]:checked');
+            checkboxes.forEach((box) => {
+                selectedHobbies.push(box.value);
+            });
+            var hobbyString = selectedHobbies.length > 0 ? selectedHobbies.join(", ") : "Hobi seçilmedi";
+
+            // paket hazırlıyor
+            var templateParams = {
+                fullname: fullname,
+                birthdate: birthdate,
+                gender: gender,
+                job: job,
+                hobbies: hobbyString,
+                bio: bio
+            };
+
+            // Emailjs'e gönderiyor
+            // kendi service ve template id'im
+            const serviceID = 'service_vaku0al'; 
+            const templateID = 'template_whfrnap'; 
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(function() {
+                    // başarılıysa
+                    btn.innerHTML = originalText;
+                    alert('Harika! Bilgilerin başarıyla gönderildi. Tanıştığımıza memnun oldum!');
+                    document.getElementById("knowYouForm").reset(); // reset
+                }, function(error) {
+                    // sıkıntılıysa
+                    btn.innerHTML = originalText;
+                    alert('Bir hata oluştu: ' + JSON.stringify(error));
+                });
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Selen Yılmaz. Tüm Hakları Saklıdır.</p>
+        <div class="social-links">
+            <a href="https://github.com/selenyilmaz-sudo" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+             </div>
+    </footer>
+
+</body>
+</html>
