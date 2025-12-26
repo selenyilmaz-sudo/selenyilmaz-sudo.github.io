@@ -94,6 +94,30 @@
         </div>
     </section>
 
+    <section class="comments-wrapper">
+        <div class="comments-container">
+            <h3>Comments & Discussion</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+                What do you think of my projects and writings? You can leave a comment below.
+            </p>
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "https://www.selenyilmaz.me/news-en.html"; 
+                    this.page.identifier = "news_en"; 
+                    this.language = "en";
+                };
+
+                (function() { 
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://selen-final-proje.disqus.com/embed.js'; 
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2025 Selen Yılmaz. All Rights Reserved.</p>
         <div class="social-links">

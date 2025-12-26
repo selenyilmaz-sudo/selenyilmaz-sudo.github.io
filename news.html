@@ -93,6 +93,35 @@
         </div>
     </section>
 
+    </section>
+
+
+    <!-- disqus ile yorum ekleme kısmı-->
+    <section class="comments-wrapper">
+        <div class="comments-container">
+            <h3>Yorumlar & Tartışma</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+                Projelerim ve yazılarım hakkında ne düşünüyorsunuz? Aşağıdan yorum bırakabilirsiniz.
+            </p>
+            <div id="disqus_thread"></div>
+            <!--wrodpress news engine kısmı kullanmadığımdan, disqus platformunu entegre ederek yorum ekleme oluşturmak için-->
+            <script>
+                var disqus_config = function () {
+                    this.page.url = "https://www.selenyilmaz.me/news.html"; 
+                    this.page.identifier = "news_tr"; 
+                    this.language = "tr";
+                };
+
+                (function() { 
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://selen-final-proje.disqus.com/embed.js'; 
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2025 Selen Yılmaz. Tüm Hakları Saklıdır.</p>
         <div class="social-links">

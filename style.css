@@ -588,3 +588,37 @@ legend {
     font-size: 0.95rem;
     line-height: 1.6;
 }
+
+/* DISQUS YORUM ALANI TASARIMI */
+
+.comments-wrapper {
+    width: 100%;
+    background-color: #f9f9f9; /*hafif gri bir zemin*/
+    padding: 50px 0;
+    margin-top: 40px;
+    border-top: 1px solid #e0e0e0; /*üstüne ince bir çizgi*/
+}
+
+.comments-container {
+    max-width: 800px; 
+    margin: 0 auto;   /* ortala */
+    padding: 30px;
+    background-color: #ffffff; /* kutunun içi beyaz */
+    border-radius: 10px;       /* köşeleri yuvarlat */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* çok hafif gölge */
+}
+
+.comments-container h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: inherit; /* sitenin fontunu miras alıyormuş */
+}
+
+/* mobilde kenarlardan taşmasın */
+@media (max-width: 768px) {
+    .comments-container {
+        width: 90%;
+        padding: 15px;
+    }
+}
